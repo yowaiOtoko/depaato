@@ -154,4 +154,53 @@ class Store
     {
         return $this->ratings;
     }
+
+    public function isAccessibility(): ?bool
+    {
+        return $this->accessibility;
+    }
+
+    public function addProduct(Product $product): static
+    {
+        if (!$this->products->contains($product)) {
+            $this->products->add($product);
+            $product->setStore($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): static
+    {
+        if ($this->products->removeElement($product)) {
+            // set the owning side to null (unless already changed)
+            if ($product->getStore() === $this) {
+                $product->setStore(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function addRating(StoreRating $rating): static
+    {
+        if (!$this->ratings->contains($rating)) {
+            $this->ratings->add($rating);
+            $rating->setStore($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRating(StoreRating $rating): static
+    {
+        if ($this->ratings->removeElement($rating)) {
+            // set the owning side to null (unless already changed)
+            if ($rating->getStore() === $this) {
+                $rating->setStore(null);
+            }
+        }
+
+        return $this;
+    }
 }
