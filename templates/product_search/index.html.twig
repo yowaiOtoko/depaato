@@ -1,0 +1,17 @@
+{# templates/product_search/index.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results for "{{ searchTerm }}"</h1>
+    <ul>
+        {% for product in products %}
+            <li>{{ product.label }} - {{ product.description }}</li>
+        {% else %}
+            <li>No products found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

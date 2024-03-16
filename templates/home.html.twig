@@ -1,0 +1,17 @@
+{# templates/landing_page/index.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Our Website</title>
+</head>
+<body>
+    <h1>Welcome to Our Website</h1>
+    <p>This is the landing page.</p>
+
+    {# Search form for products #}
+    <form action="{{ path('product_search') }}" method="get">
+        <input type="text" name="q" placeholder="Search products...">
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>
